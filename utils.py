@@ -300,7 +300,8 @@ class APIRequestsHandler:
         self.verify = verify
         self.timeout = timeout
         self.cc = cc
-        self.client = httpx.Client(http2=True, proxies=self.proxy, verify=True)
+        # self.client = httpx.Client(http2=True, proxies=self.proxy, verify=True)
+        self.client = httpx.Client(http2=True, verify=True)
         self.lock = threading.Lock()
 
     def _headers(self):
