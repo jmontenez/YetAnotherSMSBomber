@@ -1,5 +1,8 @@
 # Python's cache folders
 __pycache__/*
+__pycache__/
+.venv*/
+audit-report.json
 
 # Dolphin's per-directory settings.
 .directory

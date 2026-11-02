@@ -1,0 +1,24 @@
+name: Offline service configuration tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify-offline-auditor:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install offline audit dependencies
+        run: python -m pip install -r requirements-audit.txt
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Audit bundled service configuration without contacting APIs
+        run: python audit_services.py --config services.yaml --json > audit-report.json
