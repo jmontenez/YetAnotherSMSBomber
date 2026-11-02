@@ -134,7 +134,7 @@ if args.verify:
                 (
                     APIRequestsHandler(
                         target,
-                        proxy=proxies,
+                        # proxy=proxies,
                         verbose=args.verbose,
                         verify=True,
                         timeout=args.timeout,
@@ -159,7 +159,7 @@ else:
             for _ in range(no_of_sms - success):
                 p = APIRequestsHandler(
                     target,
-                    proxy=proxies,
+                    # proxy=proxies,
                     verbose=args.verbose,
                     timeout=args.timeout,
                     cc=country_code,
